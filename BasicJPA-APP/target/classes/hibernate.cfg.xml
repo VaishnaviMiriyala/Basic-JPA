@@ -16,5 +16,8 @@
   <mapping class="com.capg.jpa.p1.Student"/>
   <mapping class="com.capg.jpa.p1.Laptop"/>
   <mapping class="com.capg.jpa.p1.Courses"/>
+  <mapping class="com.capg.jpa.p1.Examination"/>
+  <mapping class="com.capg.jpa.p1.InternalExam"/>
+  <mapping class="com.capg.jpa.p1.ExternalExam"/>
  </session-factory>
 </hibernate-configuration>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,7 +15,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.capg.jpa.p3.Insurance;
+
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity   
 @Table(name = "MyAccounts")
@@ -48,6 +53,11 @@ public class Account {
 		@CollectionTable(name="PolicyInfo",joinColumns = @JoinColumn(name="AccountNumber"))
 		List<Policy> policies;
 		
+		// ------------- Adding Insurance Class with Accounts -----
+		
+		@OneToMany(cascade = CascadeType.ALL)
+		@JoinColumn(name="Account_Number")
+		private List<Insurance> insuranceList;
 		
 	public Account() {
 		super();
@@ -66,7 +76,15 @@ public class Account {
 		this.office_address = office_address;
 		this.policies = policies;
 	}
+	public List<Insurance> getInsuranceList() {
+		return insuranceList;
+	}
 
+
+
+	public void setInsuranceList(List<Insurance> insuranceList) {
+		this.insuranceList = insuranceList;
+	}
 
 	public List<Policy> getPolicies() {
 		return policies;

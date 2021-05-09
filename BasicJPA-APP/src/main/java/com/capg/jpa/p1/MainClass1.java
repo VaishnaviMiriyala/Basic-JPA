@@ -1,5 +1,6 @@
 package com.capg.jpa.p1;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -9,6 +10,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import com.capg.jpa.p3.Insurance;
+import com.capg.jpa.p3.LifeInsurance;
+import com.capg.jpa.p3.MedicalInsurance;
 
 public class MainClass1 {
 
@@ -61,6 +66,16 @@ public class MainClass1 {
 				
 				s.setCourses(coursesList);		
 		
+				
+		//------------------------
+				Examination e1 = new InternalExam("EEI",25,14,22);
+				Examination e2 = new ExternalExam("EEI",100,26,70);
+				
+				
+				List<Examination> examList = Arrays.asList(e1,e2);
+				s.setExamList(examList);
+				
+				
 		session.save(s);  // insert into Account .....
 		System.out.println("  -->> Data Saved ..");
 		//------------getDetails--------//

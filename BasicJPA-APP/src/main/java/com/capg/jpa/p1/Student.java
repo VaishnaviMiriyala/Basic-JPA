@@ -2,6 +2,7 @@ package com.capg.jpa.p1;
 
 
 
+
 import java.util.List;
 import java.util.Set;
 
@@ -14,12 +15,18 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.capg.jpa.p3.Insurance;
+
+
+
 @Entity   
+
 @Table(name = "BVRITHStudents")
 public class Student {
 	@Id
@@ -57,6 +64,11 @@ public class Student {
 		@JoinColumn(name="RollNumber")
 		private List<Courses> courses;
 	
+	//-------------------------------
+		@OneToMany(cascade = CascadeType.ALL)
+		@JoinColumn(name="StudnetId")
+		private List<Examination> examList;
+		
 	public Student() {
 		super();
 	}
@@ -163,6 +175,16 @@ public class Student {
 
 	public void setCourses(List<Courses> courses) {
 		this.courses = courses;
+	}
+	
+
+	public List<Examination> getExamList() {
+		return examList;
+	}
+
+
+	public void setExamList(List<Examination> examList) {
+		this.examList = examList;
 	}
 
 
